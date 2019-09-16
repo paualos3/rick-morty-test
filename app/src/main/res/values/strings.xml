@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">rick-morty-test</string>
+    <string name="start">Start!</string>
 </resources>
