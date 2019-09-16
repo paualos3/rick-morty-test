@@ -39,6 +39,6 @@ class InfoModel {
     private int pages;
 
     private String next;
-    
+
     private String prev ;
 }

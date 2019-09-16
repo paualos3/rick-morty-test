@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">rick-morty-test</string>
     <string name="start">Start!</string>
+    <string name="title_activity_tabbed_page">TabbedPageActivity</string>
+    <string name="tab_text_1">Characters</string>
+    <string name="tab_text_2">Locations</string>
+    <string name="tab_text_3">Episodes</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_characters">CharactersActivity</string>
 </resources>
