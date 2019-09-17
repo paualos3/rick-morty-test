@@ -14,19 +14,25 @@ import com.example.paualos3.rick_morty_test.R;
 
 import java.util.ArrayList;
 
-public class MyListAdapter  extends RecyclerView.Adapter<MyListAdapter.ViewHolder>  {
+public class MyListAdapter  extends RecyclerView.Adapter<MyListAdapter.ViewHolder> implements View.OnClickListener {
 
     private ArrayList<CharacterModel> dataset;
     private Context context;
+    private View.OnClickListener listener;
 
     public MyListAdapter(Context context) {
         this.context = context;
         dataset = new ArrayList<>();
     }
 
+    public CharacterModel get(int pos){
+        return dataset.get(pos);
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_character, parent, false);
+        view.setOnClickListener(this);
         return new ViewHolder(view);
     }
 
@@ -51,6 +57,17 @@ public class MyListAdapter  extends RecyclerView.Adapter<MyListAdapter.ViewHolde
     public void addCharactersList(ArrayList<CharacterModel> charactersList) {
         dataset.addAll(charactersList);
         notifyDataSetChanged();
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (listener != null){
+            listener.onClick(view);
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -1,8 +1,9 @@
 package com.example.paualos3.rick_morty_test.Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CharacterModel {
+public class CharacterModel implements Serializable {
 
     public int getId() {
         return id;
@@ -46,6 +47,10 @@ public class CharacterModel {
 
     public String getGender() {
         return gender;
+    }
+
+    public boolean isFavorited() {
+        return favorited;
     }
 
     public void setGender(String gender) {
@@ -100,6 +105,10 @@ public class CharacterModel {
         this.created = created;
     }
 
+    public void setFavorited(boolean favorited) {
+        this.favorited = favorited;
+    }
+
     private int id;
 
     private String name;
@@ -124,4 +133,5 @@ public class CharacterModel {
 
     private String created;
 
+    private boolean favorited;
 }

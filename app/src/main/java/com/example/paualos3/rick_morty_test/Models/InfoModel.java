@@ -1,6 +1,8 @@
 package com.example.paualos3.rick_morty_test.Models;
 
-class InfoModel {
+import java.io.Serializable;
+
+class InfoModel implements Serializable {
 
     public int getCount() {
         return count;

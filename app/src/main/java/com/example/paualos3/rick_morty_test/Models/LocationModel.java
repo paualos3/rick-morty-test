@@ -1,6 +1,8 @@
 package com.example.paualos3.rick_morty_test.Models;
 
-public class LocationModel {
+import java.io.Serializable;
+
+public class LocationModel implements Serializable {
 
     public String getName() {
         return name;

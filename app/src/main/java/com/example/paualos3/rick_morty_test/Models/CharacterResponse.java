@@ -1,8 +1,9 @@
 package com.example.paualos3.rick_morty_test.Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CharacterResponse {
+public class CharacterResponse implements Serializable {
 
     private ArrayList<CharacterModel> results;
 

@@ -1,5 +1,6 @@
 package com.example.paualos3.rick_morty_test;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,10 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.paualos3.rick_morty_test.Adapters.MyListAdapter;
 import com.example.paualos3.rick_morty_test.Interfaces.APIService;
 import com.example.paualos3.rick_morty_test.Models.*;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -37,6 +40,11 @@ public class CharactersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_characters);
 
+        setRecyclerView();
+        setRetrofit();
+    }
+
+    private void setRecyclerView() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         listAdapter = new MyListAdapter(this);
         recyclerView.setAdapter(listAdapter);
@@ -63,6 +71,19 @@ public class CharactersActivity extends AppCompatActivity {
                 }
             }
         });
+        listAdapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CharacterModel selectedCharacter = listAdapter.get(recyclerView.getChildAdapterPosition(view));
+                Intent intent = new Intent(getApplicationContext(), ShowCharacterActivity.class);
+                intent.putExtra("character", new Gson().toJson(selectedCharacter));
+                startActivity(intent);
+                //Toast.makeText(getApplicationContext(), "The character: " + selectedCharacter.getName(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void setRetrofit() {
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://rickandmortyapi.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
